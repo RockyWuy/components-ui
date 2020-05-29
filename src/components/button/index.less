@@ -1,0 +1,83 @@
+@btn-prefix-cls: "c-ui-btn";
+
+.c-ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  line-height: 1;
+  padding: 0 8px;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  &-primary {
+    background: #1b9af7;
+    // &:focus,
+    // &:hover {
+    //   background: #4cb0f9;
+    // }
+    &:active {
+      background: #2798eb;
+    }
+  }
+
+  &-ghost {
+    background: #fff;
+    color: #1b9af7;
+    border-color: #1b9af7;
+  }
+
+  &-success {
+    background: #a5de37;
+    &:focus,
+    &:hover {
+      background: #b9e563;
+    }
+    &:active {
+      background: #a1d243;
+    }
+  }
+
+  &-warning {
+    background: #feae1b;
+    &:focus,
+    &:hover {
+      background: #fec04e;
+    }
+    &:active {
+      background: #f3ab26;
+    }
+  }
+
+  &-danger {
+    background: #ff4351;
+    &:focus,
+    &:hover {
+      background: #ff7680;
+    }
+    &:active {
+      background: #f64c59;
+    }
+  }
+}
+
+.a {
+  background: #4cb0f9;
+  background: #2798eb;
+  background: #a5de37;
+  background: #b9e563; // hover focus
+  background: #a1d243; // active
+  background: #feae1b;
+  background: #fec04e;
+  background: #f3ab26;
+  background: #ff4351;
+  background: #ff7680;
+  background: #f64c59;
+}

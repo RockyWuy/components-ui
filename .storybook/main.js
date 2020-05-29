@@ -3,7 +3,7 @@
  * @Date: 2020-05-24 17:20:41
  * @Description:
  * @LastEditors: rockyWu
- * @LastEditTime: 2020-05-24 17:51:30
+ * @LastEditTime: 2020-05-24 19:34:58
  */
 
 module.exports = {
@@ -14,10 +14,16 @@ module.exports = {
     "@storybook/addon-links",
   ],
   webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      use: [{ loader: require.resolve("awesome-typescript-loader") }],
-    });
+    config.module.rules.push(
+      {
+        test: /\.(ts|tsx)$/,
+        use: [{ loader: require.resolve("awesome-typescript-loader") }],
+      },
+      {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"],
+      }
+    );
     config.resolve.extensions.push(".ts", ".tsx");
     return config;
   },

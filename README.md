@@ -1,8 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 项目构建
 
-## Available Scripts
+使用 create-react-app 构建项目
 
-In the project directory, you can run:
+```
+    npx create-react-app components-ui --typescript
+```
+
+加入 storybook
+
+```
+    npx -p @storybook/cli sb init --type react_scripts
+```
+需要在 .storybook 中配置 awesome-typescript-loader 支持ts
+
 
 ### `yarn start`
 

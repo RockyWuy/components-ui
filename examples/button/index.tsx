@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Button, Row, Col } from "../../src/components";
+import "../../src/components/button/style/index.less";
+import "../../src/components/grid/style/index.less";
 import { action } from "@storybook/addon-actions";
 export default function ButtonDemo() {
   return (

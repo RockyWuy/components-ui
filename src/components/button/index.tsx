@@ -1,6 +1,5 @@
 import * as React from "react";
 import ClassNames from "classnames";
-import "./index.less";
 
 type buttonType = "warning" | "primary" | "ghost";
 type buttonSize = "large" | "normal" | "small";

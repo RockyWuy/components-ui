@@ -1,6 +1,5 @@
 import React from "react";
 import ClassNames from "classnames";
-import "./style/index.less";
 
 import RowContext from "./rowContext";
 

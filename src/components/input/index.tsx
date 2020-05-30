@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState, HTMLAttributes } from "react";
 import ClassNames from "classnames";
-import "./index.less";
 
 const compose = (...fns: any) =>
   fns.reduce((f: any, g: any) => (...args: any) => f(g(...args)));

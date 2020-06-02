@@ -1,8 +1,8 @@
-import * as React from "react";
-import { configure, addDecorator, addParameters } from "@storybook/react";
+import * as React from 'react';
+import { configure, addDecorator, addParameters } from '@storybook/react';
 
 export default {
-  title: "Badge",
+  title: 'Badge',
   component: <span>saa</span>,
 };
 

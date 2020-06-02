@@ -1,8 +1,8 @@
-import * as React from "react";
-import ClassNames from "classnames";
+import * as React from 'react';
+import ClassNames from 'classnames';
 
-type buttonType = "warning" | "primary" | "ghost";
-type buttonSize = "large" | "normal" | "small";
+type buttonType = 'warning' | 'primary' | 'ghost';
+type buttonSize = 'large' | 'normal' | 'small';
 
 export interface ButtonProps {
   type?: buttonType; // button 的类型 默认 primary
@@ -19,8 +19,8 @@ export interface ButtonProps {
 const defaultProps: ButtonProps = {
   disabled: false,
   loading: false,
-  size: "normal",
-  type: "primary",
+  size: 'normal',
+  type: 'primary',
 };
 
 const getClassName = ({
@@ -32,13 +32,13 @@ const getClassName = ({
   prefixCls,
 }: ButtonProps) => {
   return ClassNames(prefixCls, className, {
-    [`${prefixCls}-primary`]: type === "primary",
-    [`${prefixCls}-warning`]: type === "warning",
-    [`${prefixCls}-ghost`]: type === "ghost",
+    [`${prefixCls}-primary`]: type === 'primary',
+    [`${prefixCls}-warning`]: type === 'warning',
+    [`${prefixCls}-ghost`]: type === 'ghost',
 
-    [`${prefixCls}-small`]: size === "small",
-    [`${prefixCls}-normal`]: size === "normal",
-    [`${prefixCls}-large`]: size === "large",
+    [`${prefixCls}-small`]: size === 'small',
+    [`${prefixCls}-normal`]: size === 'normal',
+    [`${prefixCls}-large`]: size === 'large',
 
     [`${prefixCls}-loading`]: loading,
     [`${prefixCls}-diabled`]: disabled,
@@ -47,7 +47,7 @@ const getClassName = ({
 
 function getPrefix(suffixCls: string, customizePrefixCls?: string) {
   if (customizePrefixCls) return customizePrefixCls;
-  const mergePrefixCls = "c-ui";
+  const mergePrefixCls = 'c-ui';
   return `${mergePrefixCls}-${suffixCls}`;
 }
 
@@ -55,7 +55,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   const { style, disabled, prefixCls: customizePrefixCls, children } = props;
   const { onClick } = props;
 
-  const prefixCls = getPrefix("btn", customizePrefixCls);
+  const prefixCls = getPrefix('btn', customizePrefixCls);
 
   return (
     <div>

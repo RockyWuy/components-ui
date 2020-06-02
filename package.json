@@ -94,10 +94,10 @@
     "build": "npm run build:umd && npm run build:gulp",
     "build:umd": "webpack --config scripts/webpack.prod.config.js --progress",
     "build:gulp": "./node_modules/.bin/gulp",
-    "build:es": "./node_modules/.bin/tsc -d --emitDeclarationOnly --declarationDir dist/es",
-    "build:lib": "./node_modules/.bin/tsc src/components -d --emitDeclarationOnly --declarationDir dist/lib",
-    "babel:lib": "cross-env BABEL_ENV=commonjs ./node_modules/.bin/babel src/components -d lib --extensions .tsx  --source-maps",
-    "babel:es": "cross-env BABEL_ENV=es ./node_modules/.bin/babel src/components -d es --extensions .tsx"
+    "build:es": "tsc -d --emitDeclarationOnly --declarationDir es",
+    "build:lib": "tsc src/components -d --emitDeclarationOnly --declarationDir lib",
+    "babel:lib": "cross-env BABEL_ENV=commonjs babel src/components -d lib --extensions .tsx  --source-maps",
+    "babel:es": "cross-env BABEL_ENV=es babel src/components -d es --extensions .tsx"
   },
   "browserslist": {
     "production": [

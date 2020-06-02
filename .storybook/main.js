@@ -3,7 +3,7 @@
  * @Date: 2020-05-24 17:20:41
  * @Description:
  * @LastEditors: rockyWu
- * @LastEditTime: 2020-05-29 15:03:21
+ * @LastEditTime: 2020-06-01 11:18:33
  */
 
 module.exports = {
@@ -17,7 +17,10 @@ module.exports = {
     config.module.rules.push(
       {
         test: /\.(ts|tsx)$/,
-        use: [{ loader: require.resolve("awesome-typescript-loader") }],
+        use: [
+          // { loader: require.resolve("eslint-loader") },
+          { loader: require.resolve("awesome-typescript-loader") },
+        ],
       },
       {
         test: /\.less$/,

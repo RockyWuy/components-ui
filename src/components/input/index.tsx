@@ -1,20 +1,18 @@
-import React, { useRef, useEffect, useState, HTMLAttributes } from "react";
-import ClassNames from "classnames";
+import React, { useRef, useEffect, useState, HTMLAttributes } from 'react';
+import ClassNames from 'classnames';
 
-const compose = (...fns: any) =>
-  fns.reduce((f: any, g: any) => (...args: any) => f(g(...args)));
+const compose = (...fns: any) => fns.reduce((f: any, g: any) => (...args: any) => f(g(...args)));
 
 const omit = (obj: any, arr: string[]) =>
   Object.keys(obj)
     .filter((k) => !arr.includes(k))
     .reduce((acc, key) => ((acc[key] = obj[key]), acc), {} as any);
 
-type InputType = "text" | "number" | "password" | "mobile" | "bankCard";
-type OmitProps = "type" | "prefix" | "onChange" | "value" | "defaultValue";
+type InputType = 'text' | 'number' | 'password' | 'mobile' | 'bankCard';
+type OmitProps = 'type' | 'prefix' | 'onChange' | 'value' | 'defaultValue';
 
 // 对 omit 的具体用法可以查看 typescript 的官网关于 picker 和 exclude 的用法，就是集合的概念
-interface InputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, OmitProps> {
+interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, OmitProps> {
   prefixCls?: string;
   type?: InputType; // input 框类型 默认 text
   value?: string; // 当前值
@@ -31,16 +29,16 @@ interface InputProps
 }
 
 const defaultProps: InputProps = {
-  prefixCls: "c-ui-input",
-  type: "text",
+  prefixCls: 'c-ui-input',
+  type: 'text',
   disabled: false,
   clear: false,
   onChange: () => {},
 };
 
 const normalizeValue = (value: string) => {
-  if (typeof value === undefined || value === null) {
-    return "";
+  if (typeof value == undefined || value === null) {
+    return '';
   }
   return value;
 };
@@ -48,16 +46,16 @@ const normalizeValue = (value: string) => {
 const formatValue = (value: string, type?: InputType) => {
   let newValue = value;
   switch (type) {
-    case "bankCard":
-      newValue = value.replace(/\D/g, "").replace(/(....)(?=.)/g, "$1 ");
+    case 'bankCard':
+      newValue = value.replace(/\D/g, '').replace(/(....)(?=.)/g, '$1 ');
       break;
-    case "mobile":
-      newValue = value.replace(/\D/g, "").substring(0, 11);
-      const len = newValue.length;
+    case 'mobile':
+      newValue = value.replace(/\D/g, '').substring(0, 11);
+      //   const len = newValue.length;
       newValue = `${newValue.substr(0, 3)} ${newValue.substr(3)}`;
       break;
-    case "text":
-    case "password":
+    case 'text':
+    case 'password':
     default:
       break;
   }
@@ -66,17 +64,11 @@ const formatValue = (value: string, type?: InputType) => {
 
 const parseValue = ({ type, value }: { type?: InputType; value: string }) => {
   const newValue = value;
-  const inputValue = compose(
-    (v: string) => formatValue(v, type),
-    normalizeValue
-  )(newValue);
+  const inputValue = compose((v: string) => formatValue(v, type), normalizeValue)(newValue);
   return inputValue;
 };
 
-const handleChange = (
-  e: React.ChangeEvent<HTMLInputElement>,
-  { onChange, type }: InputProps
-) => {
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>, { onChange, type }: InputProps) => {
   const value = e.target.value;
   const newValue = parseValue({ type, value });
   !!onChange && onChange(newValue);
@@ -93,16 +85,16 @@ const getClassName = (props: InputProps, focused: boolean) => {
 
 const omitProps = (props: InputProps) => {
   const excludeProps = [
-    "prefixCls",
-    "onChange",
-    "onBlur",
-    "type",
-    "prefix",
-    "suffix",
-    "style",
-    "clear",
-    "className",
-    "error",
+    'prefixCls',
+    'onChange',
+    'onBlur',
+    'type',
+    'prefix',
+    'suffix',
+    'style',
+    'clear',
+    'className',
+    'error',
   ];
   return omit(props, excludeProps);
 };

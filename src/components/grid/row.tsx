@@ -1,21 +1,21 @@
-import React from "react";
-import ClassNames from "classnames";
+import React from 'react';
+import ClassNames from 'classnames';
 
-import RowContext from "./rowContext";
+import RowContext from './rowContext';
 
 // 垂直对齐方式
-type alignType = "top" | "middle" | "bottom";
+type alignType = 'top' | 'middle' | 'bottom';
 
 // 水平对齐方式
 type justifyType =
-  | "start"
-  | "end"
-  | "center"
-  | "space-around"
-  | "space-between";
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'space-around'
+  | 'space-between';
 
 // 子元素换行方式
-type wrapType = "wrap" | "nowrap" | "wrap-reverse";
+type wrapType = 'wrap' | 'nowrap' | 'wrap-reverse';
 
 interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter: number;
@@ -26,20 +26,20 @@ interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const defaultProps: RowProps = {
   gutter: 0,
-  align: "top",
-  justify: "start",
+  align: 'top',
+  justify: 'start',
 };
 
-const prefixCls = "c-ui-row";
+const prefixCls = 'c-ui-row';
 
 const getClassNames = ({ align, justify, wrap }: RowProps) => {
   return ClassNames(prefixCls, {
     [`${prefixCls}-${align}`]: !!align,
     [`${prefixCls}-${justify}`]: !!justify,
 
-    [`${prefixCls}-nowrap`]: wrap === "nowrap",
-    [`${prefixCls}-wrap`]: wrap === "wrap",
-    [`${prefixCls}-wrap-reverse`]: wrap === "wrap-reverse",
+    [`${prefixCls}-nowrap`]: wrap === 'nowrap',
+    [`${prefixCls}-wrap`]: wrap === 'wrap',
+    [`${prefixCls}-wrap-reverse`]: wrap === 'wrap-reverse',
   });
 };
 

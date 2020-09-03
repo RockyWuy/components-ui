@@ -3,7 +3,7 @@
  * @Date: 2020-05-30 14:20:01
  * @Description:
  * @LastEditors: rockyWu
- * @LastEditTime: 2020-06-01 11:24:49
+ * @LastEditTime: 2020-06-09 14:01:56
  */
 const babel_env = process.env['BABEL_ENV'];
 let loose = false;
@@ -51,6 +51,11 @@ module.exports = {
       '@babel/plugin-transform-runtime',
       {
         useESModules,
+        // transform-runtime 默认会自动的为你使用的 ES6 API 注入 polyfill
+        // 假如你在源码中使用了 Promise，输出的代码将会自动注入 require('babel-runtime/core-js/Promise') 语句
+        // polyfill 的注入应该交给模块使用者，因为使用者可能在其它地方已经注入了其它的 Promise polyfill 库
+        // 所以关闭该功能
+        // polyfill: false,
       },
     ],
   ],

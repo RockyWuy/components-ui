@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState, HTMLAttributes } from 'react';
 import ClassNames from 'classnames';
 
-const compose = (...fns: any) => fns.reduce((f: any, g: any) => (...args: any) => f(g(...args)));
+const compose = (...fns: any) =>
+  fns.reduce((f: any, g: any) => (...args: any) => f(g(...args)));
 
 const omit = (obj: any, arr: string[]) =>
   Object.keys(obj)
@@ -12,7 +13,8 @@ type InputType = 'text' | 'number' | 'password' | 'mobile' | 'bankCard';
 type OmitProps = 'type' | 'prefix' | 'onChange' | 'value' | 'defaultValue';
 
 // 对 omit 的具体用法可以查看 typescript 的官网关于 picker 和 exclude 的用法，就是集合的概念
-interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, OmitProps> {
+interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, OmitProps> {
   prefixCls?: string;
   type?: InputType; // input 框类型 默认 text
   value?: string; // 当前值
@@ -64,11 +66,17 @@ const formatValue = (value: string, type?: InputType) => {
 
 const parseValue = ({ type, value }: { type?: InputType; value: string }) => {
   const newValue = value;
-  const inputValue = compose((v: string) => formatValue(v, type), normalizeValue)(newValue);
+  const inputValue = compose(
+    (v: string) => formatValue(v, type),
+    normalizeValue
+  )(newValue);
   return inputValue;
 };
 
-const handleChange = (e: React.ChangeEvent<HTMLInputElement>, { onChange, type }: InputProps) => {
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement>,
+  { onChange, type }: InputProps
+) => {
   const value = e.target.value;
   const newValue = parseValue({ type, value });
   !!onChange && onChange(newValue);
